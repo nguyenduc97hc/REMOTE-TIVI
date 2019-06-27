@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phát triển chương trình sử dụng Remote để điều khiển Tivi</title>
+</head>
+<body>
+    <script>
+        var Remote = function (code) {
+            this.code = code;
+            this.changeVolume = function (tv) {
+                tv.volumn +=5;
+            };
+            this.changeChannel = function (tv, channel) {
+                tv.channel = channel;
+            };
+        };
+            var tivi = function (chanel, volume) {
+                this.channel = chanel;
+                this.volume = volume;
+                this.status = true;
+                this.turnOn = function () {
+                    this.status = true;
+                };
+                this.turnOff = function () {
+                    this.status = false;
+                };
+                this.changeChannel = function () {
+                    if (this.status) {
+                        alert("Ban dang xem kenh " + this.channel);
+                    }
+                    else alert("bat ti vi len")
+                };
+                this.changeVolume = function () {
+                    if (this.status) {
+                        alert(this.volume);
+                    }
+                    else alert("bat ti vi len")
+                }
+            };
+            let tv = new tivi(7, 10);
+             let rt = new Remote();
+             tv.turnOff();
+             tv.changeChannel();
+             tv.changeVolume();
+             tv.turnOn();
+             rt.changeChannel(tv,15);
+             tv.changeChannel();
+
+    </script>
+</body>
+</html>
